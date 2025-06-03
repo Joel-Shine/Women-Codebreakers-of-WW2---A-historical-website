@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: transparent;
+            font-family: 'Cascadia Code';
+        }
+
+        #vanta-background {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+
+        .container {
+            width: 400%;
+            height: 100vh;
+            display: flex;
+            position: relative;
+            z-index: 1;
+        }
+
+        .panel {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .image-container {
+            width: 50%;
+            height: 70vh;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform-origin: center;
+        }
+
+        .text-content {
+            width: 40%;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .text-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .text-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .main-title {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            font-size: 3rem;
+            color: white;
+            margin-top: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .foo {
+            position: relative;
+            z-index: 2;
+            font-size: 30px;
+            color: white;
+            margin-top: 20px;
+            margin-left: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="main-title">The Women <span id="animateWord">Codebreakers</span> in Bletchley Park</h1>
+    
+    <script>
+        //Title animation
+
+        const wordElement = document.getElementById('animateWord');
+        const originalWord = wordElement.textContent;
+        const characters = '!@&^#*$%~HIJKLMNOPQRSTUVWXYZabcdefghijkl?/+rstuvwxyz0123456789';
+        let currentIndex = 0;
+
+        function revealWord() {
+            if (currentIndex < originalWord.length) {
+                const randomChar = characters.charAt(Math.floor(Math.random() * characters.length));
+                wordElement.textContent = originalWord.substring(0, currentIndex) + randomChar;
+                currentIndex++;
+                setTimeout(revealWord, 100);
+            } else {
+                wordElement.textContent = originalWord;
+                setTimeout(() => {
+                    currentIndex = 0;
+                    revealWord();
+                }, 3200);
+            }
+        }
+
+        revealWord();
+    </script>
+
+
+
+    <div id="vanta-background"></div>
+
+
+    <div class="container">
+        <section class="panel">
+            <div class="image-container">
+                <img src="assets/img1.jpg" alt="Historical Image 1">
+            </div>
+            <div class="text-content">
+                <h2>The women who broke Colossus !</h2>
+                <p>
+                    The Colossus computer was a series of programmable electronic computers developed by British codebreakers 
+                    during World War II to crack the Lorenz cipher, a complex encryption used by German high command. These 
+                    computers were designed to be used by the British Royal Air Force, but they were not used for long. The women in
+                    the picture were hired by British intelligence agency to crack the code used by the Germans to communicate with each other.
+                    <br><br>
+
+                    In the picture to the left, clockwise from top left: Betty Webb, Bletchley Park in Buckinghamshire, Joan Joslin, Joyce Aylard, 
+                    the Colossus codebreakers in 1945, and Betty Webb at 91 years. 
+                    <br><br>
+                    Photography: Courtesy of 
+                    Bletchley Park, Mirrorpix, Getty Images, Rex/Shutterstock. Taken from 'The Gaurdian'.
+                </p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="image-container">
+                <img src="assets/img2.jpg" alt="Historical Image 2">
+            </div>
+            <div class="text-content">
+                <h2>The Recruitment</h2>
+                <p>
+                    The heads of Bletchley Park next looked for women who were linguists, mathematicians, and even crossword experts.
+                    In 1942 the Daily Telegraph hosted a competition where a cryptic crossword was to be solved within 12 minutes. 
+                    Winners were approached by the military and some were recruited to work at Bletchley Park, as these individuals were 
+                    thought to have strong lateral thinking skills, important for codebreaking.<br><br>
+
+                    When successful, their codebreaking efforts could have a monumental impact on the war effort. The decoding of one 
+                    of the messages led to the location of the Scharnhorst, one of Germany's most famous battleships to be revealed. 
+                    Allied forces were then able to attack and defeat the ship in the Battle of the North Cape, off Norway.
+
+                    <br><br>
+                    The Picture to the left, Bletchley Park, inside and out. Photography: Rex/Shutterstock, Getty Images. Taken from 'The Guardian'.
+                </p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="image-container">
+                <img src="assets/img3.jpg" alt="Historical Image 3">
+            </div>
+            <div class="text-content">
+                <h2>Selected Women</h2>
+                <p>
+                    1) Mavis Batey - Recruited as a codebreaker in Bletchley, she was responsible for helping to work out the wiring
+                    of Abwehr Enigma, an Enigma machine previously thought to be unbreakable.<br><br>
+
+                    2) Jean Valentine - Jean Valentine was an excellent cryptanalyst and operator of the bombe decryption device in Hut 11 at Bletchley Park 
+                    in England, designed by Alan Turing and others during World War II.<br><br>
+
+                    3) Joan Clarke - She was one of the few women employed at Bletchley as a full-fledged cryptanalyst and played an
+                    important role in breaking the Enigma machine.<br><br>
+
+                    The Picture to the left, A Colossus Mark 2 computer being operated by Dorothy Du Boisson (left) and Elsie Booker.
+                    Photo credit: Wikipedia.
+
+                </p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="image-container">
+                <img src="assets/img4.jpg" alt="Historical Image 4">
+            </div>
+            <div class="text-content">
+                <h2>"The Turing effect"</h2>
+                <p>
+                    One of the most influential person in the history of cryptography was Alan Turing. He was a brilliant mathematician and
+                    cryptanalyst who cracked the Enigma machine during World War II. Turing's work on the Enigma machine led to the 
+                    development of the modern-day cryptography. He was helped by various women who worked at Bletchley Park, including
+                    Joan Clarke, Dorothy Du Boisson, and Elsie Booker. Breaking the Enigma machine was a feat that is said to
+                    have shortened the war by more than 2 years. The movie, 'Imitation Game', showcases
+                    Alan Turing's genius and the impact of his work at a time when computers were still in their infancy.
+
+                    <br><br>
+                    The picture to the left, the Lorenz SZ42 German cypher machine and Alan Turing. Photography: Alamy, taken from 'The Guardian'.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Initialize Vanta.js
+        VANTA.NET({
+            el: "#vanta-background",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3498db,        // Adjust color to match your theme
+            backgroundColor: 0x0a192f, // Dark blue background
+            showDots: false,
+            points: 15,
+            maxDistance: 25,
+            spacing: 20
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Main horizontal scroll
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".container",
+                pin: true,
+                start: "top top",
+                end: "+=3000",
+                scrub: 1,
+            }
+        });
+
+        tl.to(".container", {
+            x: () => -(document.querySelector(".container").offsetWidth - window.innerWidth),
+            ease: "none"
+        });
+
+        // Panel animations
+        document.querySelectorAll(".panel").forEach((panel, i) => {
+            const textContent = panel.querySelector(".text-content");
+            const img = panel.querySelector("img");
+
+            // Text animation
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: panel,
+                    containerAnimation: tl,
+                    start: "left center",
+                    end: "right center",
+                    scrub: true,
+                    toggleActions: "play none none reverse"
+                }
+            })
+            .fromTo(textContent, 
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1 }
+            );
+
+            // Image animation
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: panel,
+                    containerAnimation: tl,
+                    start: "left right",
+                    end: "right left",
+                    scrub: true
+                }
+            })
+            .fromTo(img,
+                { scale: 1 },
+                { scale: 1.1 }
+            );
+        });
+    </script>
+
+    <br>
+
+
+    <footer class="foo">
+        <u><h3>References</h3></u>
+        <ul>
+            <li><a href="https://www.theguardian.com/careers/2018/jul/24/meet-the-female-codebreakers-of-bletchley-park">The Guardian</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Women_in_Bletchley_Park">Wikipedia</a></li>
+            <li><a href="https://www.bbc.com/news/articles/cx0z85xlwv8o">BBC</a></li>
+            <li><a href="https://artsandculture.google.com/story/the-women-of-bletchley-park-bletchley-park/qgVxQIAxvdB-JA?hl=en">Google Arts and Culture</a></li>
+        </ul>
+    </footer>
+
+    <style>
+        a:link {
+          color: #5BC0BE;
+          background-color: transparent;
+          text-decoration: none;
+        }
+        
+        a:visited {
+          color: #5BC0BE;
+          background-color: transparent;
+          text-decoration: none;
+        }
+        
+        a:hover {
+          color: #3A506B;
+          background-color: transparent;
+          text-decoration: underline;
+        }
+        
+        a:active {
+          color: #33658A;
+          background-color: transparent;
+          text-decoration: underline;
+        }
+    </style>
+
+</body>
+</html>
